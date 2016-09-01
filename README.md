@@ -1,22 +1,26 @@
 # hashwalker
 
 ## testing
+
 go test ./...
 
 ## build
+
 go build -o hashwalker
 
 ## usage
+
 ```
   -dir string
     	walks the file tree rooted at dir
   -ignore string
-    	ignore sub folder of file
+    	ignore sub folder or file
   -out string
     	save result to out file
 ```
 
 ## example
+
 ``` shell
 ./hashwalker -dir=$PWD -ignore="file.go,*_test.go" -out=out.txt
 ```

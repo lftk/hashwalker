@@ -12,7 +12,7 @@ import (
 
 var (
 	dir    = flag.String("dir", "", "walks the file tree rooted at dir")
-	ignore = flag.String("ignore", "", "ignore sub folder of file")
+	ignore = flag.String("ignore", "", "ignore sub folder or file")
 	out    = flag.String("out", "", "save result to out file")
 )
 
