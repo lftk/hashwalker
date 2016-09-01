@@ -2,11 +2,15 @@
 
 ## testing
 
+```
 go test ./...
+```
 
 ## build
 
+```
 go build -o hashwalker
+```
 
 ## usage
 
@@ -14,7 +18,7 @@ go build -o hashwalker
   -dir string
     	walks the file tree rooted at dir
   -ignore string
-    	ignore sub folder or file
+    	ignore sub directory or file
   -out string
     	save result to out file
 ```
@@ -22,16 +26,16 @@ go build -o hashwalker
 ## example
 
 ``` shell
-./hashwalker -dir=$PWD -ignore="file.go,*_test.go" -out=out.txt
+./hashwalker -dir=$PWD -ignore="out.txt,*_test.go,.git*" -out=out.txt
 ```
 
 `cat out.txt`
 
-    ~/hashwalker/LICENSE,92170cdc034b2ff819323ff670d3b7266c8bffcd,11357
-    ~/hashwalker/README.md,fb784341f675ed0ee1f364c5e7c5365b7984539e,12
-    ~/hashwalker/hash.go,641aeb884057a59d241716c127fe0c31e0f0c708,498
-    ~/hashwalker/main.go,6423fb66c1b21226f6f2f4522d3e25ab1e43c969,1228
-    ~/hashwalker/out.txt,286365e81cd4e3f16c83bbf3d8cac6b0a355cc36,0
-    ~/hashwalker/walker.go,87c580002126d9df6fa1e64e667ded2c3a3170b8,775
-    ~/hashwalker/writer.go,295d7b8d7522e14ebc7b48bd0cc75ae61aeaf86e,368
-    ~/hashwalker/hashwalker,76b0b0595d789bd3694134bf605ff783ac9d3d63,2745616
+    LICENSE,92170cdc034b2ff819323ff670d3b7266c8bffcd,11357
+    README.md,0b6a0cd170aaf4e014b1ab9aa752cfc26706e190,881
+    file.go,202469a510ceead49cb36afc81931a7cbfcce055,184
+    hash.go,641aeb884057a59d241716c127fe0c31e0f0c708,498
+    main.go,957645e724b495cbc7538e8a723bf24a15be28d3,1231
+    walker.go,b764ad909b580a1a44fc260c38c3d55e08949f10,982
+    write.go,c78429393f4c38f5013ec124dd7eebc6b501f44e,246
+    hashwalker,0a69188cfe54441785ffb6dada1dc45efc4f71f8,2751032

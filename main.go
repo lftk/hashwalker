@@ -12,7 +12,7 @@ import (
 
 var (
 	dir    = flag.String("dir", "", "walks the file tree rooted at dir")
-	ignore = flag.String("ignore", "", "ignore sub folder or file")
+	ignore = flag.String("ignore", "", "ignore sub directory or file")
 	out    = flag.String("out", "", "save result to out file")
 )
 
@@ -33,8 +33,8 @@ func main() {
 
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
-	in := make(chan *file, 1024)
-	out := make(chan *file, 1024)
+	in := make(chan *file, 32)
+	out := make(chan *file, 32)
 	wg := new(sync.WaitGroup)
 	done := make(chan interface{})
 
