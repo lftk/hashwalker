@@ -1,7 +1,6 @@
 package main
 
 import (
-	"path/filepath"
 	"testing"
 )
 
@@ -13,8 +12,7 @@ func Test_filter(t *testing.T) {
 }
 
 func testFilter(t *testing.T, path string, patterns []string, b bool) {
-	path2 := filepath.Join("/root", path)
-	b2, err := filter("/root", patterns, path2)
+	b2, err := filter(patterns, path)
 	if err != nil {
 		t.Error(err)
 	} else if b2 != b {
