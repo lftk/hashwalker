@@ -13,20 +13,20 @@ func walk(root string, ignores []string, files chan *file) error {
 			return err
 		}
 		// get relative path
-		path, err = filepath.Rel(root, path)
+		rel, err := filepath.Rel(root, path)
 		if err != nil {
 			return err
 		}
 		// filter file
 		for _, dir := range ignored {
-			if strings.HasPrefix(path, dir) {
+			if strings.HasPrefix(rel, dir) {
 				return nil
 			}
 		}
-		b, err := filter(ignores, path)
+		b, err := filter(ignores, rel)
 		if err != nil || b == true {
 			if err == nil && info.IsDir() {
-				ignored = append(ignored, path)
+				ignored = append(ignored, rel)
 			}
 			return err
 		}
