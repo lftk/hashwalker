@@ -18,17 +18,17 @@ func walk(root string, ignores []string, files chan *file) error {
 			return err
 		}
 		// filter file
+		for _, dir := range ignored {
+			if strings.HasPrefix(path, dir) {
+				return nil
+			}
+		}
 		b, err := filter(ignores, path)
 		if err != nil || b == true {
 			if err == nil && info.IsDir() {
 				ignored = append(ignored, path)
 			}
 			return err
-		}
-		for _, dir := range ignored {
-			if strings.HasPrefix(path, dir) {
-				return nil
-			}
 		}
 		// save to files(chan *file)
 		if info.IsDir() == false {
