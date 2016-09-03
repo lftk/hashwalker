@@ -47,7 +47,7 @@ func main() {
 			close(done)
 		}()
 
-		err := write(writer, out)
+		err := write(writer, *dir, out)
 		if err != nil {
 			log.Fatal(err)
 		}
