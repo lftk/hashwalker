@@ -3,11 +3,9 @@ package main
 import (
 	"os"
 	"path/filepath"
-	"strings"
 )
 
 func walk(root string, ignores []string, files chan *file) error {
-	var ignored []string
 	return filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -17,16 +15,11 @@ func walk(root string, ignores []string, files chan *file) error {
 		if err != nil {
 			return err
 		}
-		// filter file
-		for _, dir := range ignored {
-			if strings.HasPrefix(rel, dir) {
-				return nil
-			}
-		}
+		// filter path
 		b, err := filter(ignores, rel)
 		if err != nil || b == true {
 			if err == nil && info.IsDir() {
-				ignored = append(ignored, rel)
+				err = filepath.SkipDir
 			}
 			return err
 		}
